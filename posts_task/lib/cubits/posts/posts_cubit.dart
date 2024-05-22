@@ -10,7 +10,6 @@ class PostsCubit extends Cubit<PostsState> {
   PostsCubit(this._postService) : super(PostsInitial());
   final PostService _postService;
   List<PostResponse> posts = [];
-  List<PostResponse> addedPosts = [];
   void getPosts() async {
     try {
       emit(PostsLoading());
@@ -22,14 +21,5 @@ class PostsCubit extends Cubit<PostsState> {
       emit(PostsFailure(message: 'Error occured'));
     }
   }
-  void addPost(int id) {
-    posts.indexWhere((post) {
-      if (post.id == id) {
-        addedPosts.add(post);
-        return true;
-      }
-      return false;
-    });
-    emit(PostsSuccess(response: posts));
-  }
+ 
 }

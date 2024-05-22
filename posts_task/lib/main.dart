@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:posts_task/utils/di/locator.dart';
 import 'package:posts_task/utils/helpers/pager.dart';
+import 'package:posts_task/cubits/posts/posts_cubit.dart';
+import 'package:posts_task/cubits/post_id/post_id_cubit.dart';
 
 void main() {
    setUpLocator();
@@ -19,7 +22,17 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Pager.home,
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => PostsCubit(locator())..getPosts(),
+          ),
+          BlocProvider(
+            create: (context) => PostIdCubit(locator())..getPostsById(),
+          ),
+        ],
+        child: Pager.home,
+      ),
     );
   }
 }
