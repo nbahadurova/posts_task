@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:posts_task/data/models/post_model.dart';
-import 'package:posts_task/cubits/posts/posts_cubit.dart';
-import 'package:posts_task/data/services/post_service.dart';
 import 'package:posts_task/data/services/post_id_service.dart';
 
 part 'post_id_state.dart';

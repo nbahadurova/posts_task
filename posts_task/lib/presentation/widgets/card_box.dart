@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:posts_task/data/models/post_model.dart';
-import 'package:posts_task/cubits/posts/posts_cubit.dart';
 import 'package:posts_task/utils/constants/app_paddings.dart';
 import 'package:posts_task/utils/extensions/sized_box_extensions.dart';
 
@@ -11,7 +9,6 @@ class CardBox extends StatelessWidget {
   final PostResponse post;
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<PostsCubit>();
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),

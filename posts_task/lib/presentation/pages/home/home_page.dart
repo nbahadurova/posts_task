@@ -1,9 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:posts_task/utils/helpers/pager.dart';
 import 'package:posts_task/cubits/posts/posts_cubit.dart';
-import 'package:posts_task/cubits/post_id/post_id_cubit.dart';
 import 'package:posts_task/utils/constants/app_paddings.dart';
 import 'package:posts_task/presentation/widgets/card_box.dart';
 import 'package:posts_task/presentation/pages/posts/post_detail_page.dart';
@@ -14,7 +12,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<PostsCubit>();
-    // final posts = cubit.getPosts();
     return Scaffold(
       appBar: AppBar(
         title: const Text(''),
