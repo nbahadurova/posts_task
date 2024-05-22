@@ -7,6 +7,5 @@ class PostRepository implements PostContract{
   PostRepository(this._postService);
   final PostService _postService;
   @override
-  Future<List<PostResponse>> getPosts() =>  _postService.getPosts();
-  
+  Future<List<PostResponse>> getPosts() =>  _postService.getPosts();  
 }

@@ -5,6 +5,7 @@ import 'package:posts_task/utils/helpers/pager.dart';
 import 'package:posts_task/cubits/posts/posts_cubit.dart';
 import 'package:posts_task/utils/constants/app_paddings.dart';
 import 'package:posts_task/presentation/widgets/card_box.dart';
+import 'package:posts_task/presentation/pages/posts/post_detail_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,21 +17,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(''),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BlocProvider.value(
-                      value: cubit,
-                      child: Pager.posts,
-                    ),
-                  ));
-            },
-            icon: const Icon(Icons.shopping_cart),
-          ),
-        ],
       ),
       body: Padding(
         padding: AppPaddings.h15,
@@ -53,7 +39,17 @@ class HomePage extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       log('$index');
-                      context.read<PostsCubit>().addPost(posts.id);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BlocProvider.value(
+                            value: cubit,
+                            child: PostDetailPage(
+                              post: posts,
+                            ),
+                          ),
+                        ),
+                      );
                     },
                     child: CardBox(
                       post: posts,
